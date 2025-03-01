@@ -1,34 +1,16 @@
 {
-  "text.autoconfig.villagerxp.title": "Configurazione di VillagerXP",
   "villagerxp.config.section.no.villager.trading.common.toml.title": "Configurazione di VillagerXP",
   "villagerxp.config.title": "Configurazione di VillagerXP",
-  "villagerxp.config.section.title": "Impostazioni di configurazione",
 
-  "villagerxp.config.section.no.villager.trading.common.toml": "",
+  "villagerxp.config.category.bottles": "Impostazioni Bottiglia di Incantamento",
+  "villagerxp.config.category.orbs": "Impostazioni Sfere di Esperienza",
 
-  "villagerxp.config.undo": "Annulla",
-  "villagerxp.config.undo.tooltip": "Annulla l'ultima modifica",
-  "villagerxp.config.reset.tooltip": "Ripristina i valori predefiniti",
+  "villagerxp.config.requireCtrl": "Richiedi Accovacciamento",
+  "villagerxp.config.xpMultiplier": "Moltiplicatore XP",
+  "villagerxp.config.orbAttractRange": "Raggio di Attrazione",
+  "villagerxp.config.orbPickupRange": "Raggio di Raccolta",
 
-  "villagerxp.config.xpAmount": "Quantità di XP",
-  "villagerxp.config.xpAmount.tooltip": "Quantità di XP data ai villager [(Basso) 1 <-> 150 (Maestro Istantaneo)]",
-
-  "villagerxp.config.enableBottles": "Abilita Bottiglie",
-  "villagerxp.config.enableBottles.tooltip": "Consenti l'uso di Bottiglie di XP sui villager",
-
-  "villagerxp.config.enableOrbs": "Abilita Orbs",
-  "villagerxp.config.enableOrbs.tooltip": "Consenti Orbs di XP per livellare i villager",
-
-  "villagerxp.config.requireCtrl": "Clic di Accovacciarsi con Bottiglia",
-  "villagerxp.config.requireCtrl.tooltip": "Richiede di accovacciarsi per usare Bottiglie di XP sui villager",
-
-  "villagerxp.config.bottleMultiplier": "Moltiplicatore di XP di Bottiglia",
-  "villagerxp.config.bottleMultiplier.tooltip": "Moltiplicatore per XP dato dalle bottiglie [(Basso) 0.1x <-> 5.0x (Alto)]",
-
-  "villagerxp.config.orbMultiplier": "Moltiplicatore di XP di Orbe",
-  "villagerxp.config.orbMultiplier.tooltip": "Moltiplicatore per XP dato dagli orbs [(Basso) 0.1x <-> 5.0x (Alto)]",
-
+  "villagerxp.config.enable": "Abilita",
   "villagerxp.config.reset": "Ripristina",
-  "villagerxp.config.default": "Predefinito",
-  "villagerxp.config.orbRange": "Portata dell'Orbe"
+  "villagerxp.config.default": "Predefinito"
 }

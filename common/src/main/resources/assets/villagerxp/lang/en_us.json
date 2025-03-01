@@ -7,7 +7,8 @@
 
   "villagerxp.config.requireCtrl": "Require Crouching",
   "villagerxp.config.xpMultiplier": "XP Multiplier",
-  "villagerxp.config.orbRange": "Pickup Range",
+  "villagerxp.config.orbAttractRange": "Attraction Range",
+  "villagerxp.config.orbPickupRange": "Pickup Range",
 
   "villagerxp.config.enable": "Enable",
   "villagerxp.config.reset": "Reset",

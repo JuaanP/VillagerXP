@@ -1,5 +1,6 @@
 package com.juaanp.villagerxp.client;
 
+import com.juaanp.villagerxp.Constants;
 import com.juaanp.villagerxp.config.CommonConfig;
 import com.juaanp.villagerxp.config.ConfigHelper;
 import net.minecraft.client.OptionInstance;
@@ -14,6 +15,8 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.options.OptionsSubScreen;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
+
+import static com.juaanp.villagerxp.Constants.*;
 
 public class ConfigScreenBase extends OptionsSubScreen {
     private static final Component TITLE = Component.translatable("villagerxp.config.title");
@@ -55,8 +58,8 @@ public class ConfigScreenBase extends OptionsSubScreen {
                 getRequireCrouching() != CommonConfig.getDefaultRequiresCrouching() ||
                 getBottleXpMultiplier() != CommonConfig.getDefaultBottleXpMultiplier() ||
                 getOrbXpMultiplier() != CommonConfig.getDefaultOrbXpMultiplier() ||
-                getOrbRange() != CommonConfig.getDefaultOrbRange() ||
-                getShowOrbRanges() != CommonConfig.getDefaultShowOrbRanges();
+                getOrbAttractRange() != CommonConfig.getDefaultOrbAttractRange() ||
+                getOrbPickupRange() != CommonConfig.getDefaultOrbPickupRange();
     }
 
     private void resetToDefaults() {
@@ -66,8 +69,8 @@ public class ConfigScreenBase extends OptionsSubScreen {
         setRequireCrouching(CommonConfig.getDefaultRequiresCrouching());
         setBottleXpMultiplier(CommonConfig.getDefaultBottleXpMultiplier());
         setOrbXpMultiplier(CommonConfig.getDefaultOrbXpMultiplier());
-        setOrbRange(CommonConfig.getDefaultOrbRange());
-        setShowOrbRanges(CommonConfig.getDefaultShowOrbRanges());
+        setOrbAttractRange(CommonConfig.getDefaultOrbAttractRange());
+        setOrbPickupRange(CommonConfig.getDefaultOrbPickupRange());
 
         saveConfig();
 
@@ -82,7 +85,8 @@ public class ConfigScreenBase extends OptionsSubScreen {
     private Boolean lastRequireCrouching = null;
     private Float lastBottleMultiplier = null;
     private Float lastOrbMultiplier = null;
-    private Double lastOrbRange = null;
+    private Double lastOrbAttractRange = null;
+    private Double lastOrbPickupRange = null;
     private Boolean lastShowOrbRanges = null; // Add this missing field
 
     @Override
@@ -113,23 +117,17 @@ public class ConfigScreenBase extends OptionsSubScreen {
                 this::setRequireCrouching
         );
 
-        OptionInstance<Boolean> showOrbRangesToggle = OptionInstance.createBoolean(
-                "villagerxp.config.showOrbRanges",
-                getShowOrbRanges(),
-                this::setShowOrbRanges
-        );
-
         OptionInstance<Double> bottleMultiplier = new OptionInstance<>(
                 "villagerxp.config.xpMultiplier",
                 OptionInstance.noTooltip(),
                 (prefix, value) -> prefix.copy()
                         .append(": ")
-                        .append(value == 1.0
+                        .append(Math.abs(value - DEFAULT_BOTTLE_XP_MULTIPLIER) < Constants.FLOAT_COMPARISON_EPSILON
                                 ? Component.translatable("villagerxp.config.default")
                                 : Component.literal(String.format("%.1f", value))),
                 OptionInstance.UnitDouble.INSTANCE.xmap(
-                        d -> d * 4.9 + 0.1,
-                        d -> (d - 0.1) / 4.9
+                        value -> Constants.MIN_XP_MULTIPLIER_RANGE + value * (Constants.MAX_XP_MULTIPLIER_RANGE - Constants.MIN_XP_MULTIPLIER_RANGE),
+                        value -> (value - Constants.MIN_XP_MULTIPLIER_RANGE) / (Constants.MAX_XP_MULTIPLIER_RANGE - Constants.MIN_XP_MULTIPLIER_RANGE)
                 ),
                 (double)getBottleXpMultiplier(),
                 value -> setBottleXpMultiplier(value.floatValue())
@@ -140,29 +138,47 @@ public class ConfigScreenBase extends OptionsSubScreen {
                 OptionInstance.noTooltip(),
                 (prefix, value) -> prefix.copy()
                         .append(": ")
-                        .append(value == 1.0
+                        .append(Math.abs(value - DEFAULT_ORBS_XP_MULTIPLIER) < Constants.FLOAT_COMPARISON_EPSILON
                                 ? Component.translatable("villagerxp.config.default")
                                 : Component.literal(String.format("%.1f", value))),
                 OptionInstance.UnitDouble.INSTANCE.xmap(
-                        d -> d * 4.9 + 0.1,
-                        d -> (d - 0.1) / 4.9
+                        value -> Constants.MIN_XP_MULTIPLIER_RANGE + value * (Constants.MAX_XP_MULTIPLIER_RANGE - Constants.MIN_XP_MULTIPLIER_RANGE),
+                        value -> (value - Constants.MIN_XP_MULTIPLIER_RANGE) / (Constants.MAX_XP_MULTIPLIER_RANGE - Constants.MIN_XP_MULTIPLIER_RANGE)
                 ),
                 (double)getOrbXpMultiplier(),
                 value -> setOrbXpMultiplier(value.floatValue())
         );
 
-        OptionInstance<Double> orbRangeOption = new OptionInstance<>(
-                "villagerxp.config.orbRange",
+        OptionInstance<Double> orbAttractRangeOption = new OptionInstance<>(
+                "villagerxp.config.orbAttractRange",
                 OptionInstance.noTooltip(),
                 (component, value) -> component.copy()
                         .append(": ")
-                        .append(Component.literal(String.format("%.1f", value))),
+                        .append(Math.abs(value - DEFAULT_ORB_ATTRACT_RANGE) < Constants.FLOAT_COMPARISON_EPSILON
+                                ? Component.translatable("villagerxp.config.default")
+                                : Component.literal(String.format("%.1f", value))),
                 OptionInstance.UnitDouble.INSTANCE.xmap(
-                        value -> value * 32.0,
-                        value -> value / 32.0
+                        value -> Constants.MIN_ORB_ATTRACT_RANGE + value * (Constants.MAX_ORB_ATTRACT_RANGE - Constants.MIN_ORB_ATTRACT_RANGE),
+                        value -> (value - Constants.MIN_ORB_ATTRACT_RANGE) / (Constants.MAX_ORB_ATTRACT_RANGE - Constants.MIN_ORB_ATTRACT_RANGE)
                 ),
-                getOrbRange(),
-                this::setOrbRange
+                getOrbAttractRange(),
+                this::setOrbAttractRange
+        );
+
+        OptionInstance<Double> orbPickupRangeOption = new OptionInstance<>(
+                "villagerxp.config.orbPickupRange",
+                OptionInstance.noTooltip(),
+                (component, value) -> component.copy()
+                        .append(": ")
+                        .append(Math.abs(value - DEFAULT_ORB_PICKUP_RANGE) < Constants.FLOAT_COMPARISON_EPSILON
+                                ? Component.translatable("villagerxp.config.default")
+                                : Component.literal(String.format("%.1f", value))),
+                OptionInstance.UnitDouble.INSTANCE.xmap(
+                        value -> Constants.MIN_ORB_PICKUP_RANGE + value * (Constants.MAX_ORB_PICKUP_RANGE - Constants.MIN_ORB_PICKUP_RANGE),
+                        value -> (value - Constants.MIN_ORB_PICKUP_RANGE) / (Constants.MAX_ORB_PICKUP_RANGE - Constants.MIN_ORB_PICKUP_RANGE)
+                ),
+                getOrbPickupRange(),
+                this::setOrbPickupRange
         );
 
         // Create header widgets for categories
@@ -175,7 +191,9 @@ public class ConfigScreenBase extends OptionsSubScreen {
         // Add orbs category header
         this.list.addSmall(orbsHeader, null);
         this.list.addBig(orbToggle);
-        this.list.addSmall(orbRangeOption, orbMultiplier);
+        this.list.addBig(orbMultiplier);
+        this.list.addBig(orbAttractRangeOption);
+        this.list.addBig(orbPickupRangeOption);
 
         // Add spacing between categories
         this.list.addSmall(new EmptyWidget(10, 16), new EmptyWidget(10, 16));
@@ -183,7 +201,8 @@ public class ConfigScreenBase extends OptionsSubScreen {
         // Add bottles category header
         this.list.addSmall(bottlesHeader, null);
         this.list.addBig(bottleToggle);
-        this.list.addSmall(crouchToggle, bottleMultiplier);
+        this.list.addBig(bottleMultiplier);
+        this.list.addBig(crouchToggle);
     }
 
     private void initializeTrackingFields() {
@@ -193,8 +212,8 @@ public class ConfigScreenBase extends OptionsSubScreen {
         lastRequireCrouching = getRequireCrouching();
         lastBottleMultiplier = getBottleXpMultiplier();
         lastOrbMultiplier = getOrbXpMultiplier();
-        lastOrbRange = getOrbRange();
-        lastShowOrbRanges = getShowOrbRanges();
+        lastOrbAttractRange = getOrbAttractRange();
+        lastOrbPickupRange = getOrbPickupRange();
     }
 
     private static class EmptyWidget extends AbstractWidget {
@@ -268,20 +287,20 @@ public class ConfigScreenBase extends OptionsSubScreen {
         CommonConfig.getInstance().setOrbXpMultiplier(multiplier);
     }
 
-    protected double getOrbRange() {
-        return CommonConfig.getInstance().getOrbRange();
+    protected double getOrbAttractRange() {
+        return CommonConfig.getInstance().getOrbAttractRange();
     }
 
-    protected void setOrbRange(double orbRange) {
-        CommonConfig.getInstance().setOrbRange(orbRange);
+    protected void setOrbAttractRange(double orbAttractRange) {
+        CommonConfig.getInstance().setOrbAttractRange(orbAttractRange);
     }
 
-    protected boolean getShowOrbRanges() {
-        return CommonConfig.getInstance().getShowOrbRanges();
+    protected double getOrbPickupRange() {
+        return CommonConfig.getInstance().getOrbPickupRange();
     }
 
-    protected void setShowOrbRanges(boolean show) {
-        CommonConfig.getInstance().setShowOrbRanges(show);
+    protected void setOrbPickupRange(double orbPickupRange) {
+        CommonConfig.getInstance().setOrbPickupRange(orbPickupRange);
     }
 
     protected void saveConfig() {

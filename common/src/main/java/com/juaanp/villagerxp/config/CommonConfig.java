@@ -13,8 +13,8 @@ public class CommonConfig {
     private boolean requiresCrouching;
     private float bottleXpMultiplier;
     private float orbXpMultiplier;
-    private double orbRange;
-    private boolean showOrbRanges; // New field for debug rendering
+    private double orbAttractRange;
+    private double orbPickupRange;
 
     // Private constructor for singleton
     private CommonConfig() {
@@ -25,8 +25,8 @@ public class CommonConfig {
         this.requiresCrouching = DEFAULT_REQUIRES_CROUCHING;
         this.bottleXpMultiplier = DEFAULT_BOTTLE_XP_MULTIPLIER;
         this.orbXpMultiplier = DEFAULT_ORBS_XP_MULTIPLIER;
-        this.orbRange = DEFAULT_ORB_RANGE;
-        this.showOrbRanges = DEFAULT_SHOW_ORB_RANGES;
+        this.orbAttractRange = DEFAULT_ORB_ATTRACT_RANGE;
+        this.orbPickupRange = DEFAULT_ORB_PICKUP_RANGE;
     }
 
     public static CommonConfig getInstance() {
@@ -61,12 +61,12 @@ public class CommonConfig {
         return DEFAULT_ORBS_XP_MULTIPLIER;
     }
 
-    public static double getDefaultOrbRange() {
-        return DEFAULT_ORB_RANGE;
+    public static double getDefaultOrbAttractRange() {
+        return DEFAULT_ORB_ATTRACT_RANGE;
     }
 
-    public static boolean getDefaultShowOrbRanges() {
-        return DEFAULT_SHOW_ORB_RANGES;
+    public static double getDefaultOrbPickupRange() {
+        return DEFAULT_ORB_PICKUP_RANGE;
     }
 
     public int getXpAmount() {
@@ -117,29 +117,22 @@ public class CommonConfig {
         this.orbXpMultiplier = orbXpMultiplier;
     }
 
-    public double getOrbRange() {
-        return orbRange;
+    public double getOrbAttractRange() {
+        return orbAttractRange;
     }
 
-    public void setOrbRange(double orbRange) {
-        this.orbRange = orbRange;
+    public void setOrbAttractRange(double orbAttractRange) {
+        this.orbAttractRange = Math.max(orbAttractRange, this.orbPickupRange);
     }
 
-    public boolean getShowOrbRanges() {
-        return showOrbRanges;
+    public double getOrbPickupRange() {
+        return orbPickupRange;
     }
 
-    public void setShowOrbRanges(boolean showOrbRanges) {
-        this.showOrbRanges = showOrbRanges;
-        // Toggle debug rendering when this is changed
-        try {
-            Class<?> rendererMixinClass = Class.forName("com.juaanp.villagerxp.mixin.ExperienceOrbRendererMixin");
-            java.lang.reflect.Method toggleMethod = rendererMixinClass.getMethod("toggleDebugRendering");
-            if (showOrbRanges) {
-                toggleMethod.invoke(null);
-            }
-        } catch (Exception e) {
-            // Silently fail, debug rendering will still work through the static field
+    public void setOrbPickupRange(double orbPickupRange) {
+        this.orbPickupRange = orbPickupRange;
+        if (this.orbAttractRange < orbPickupRange) {
+            this.orbAttractRange = orbPickupRange;
         }
     }
 }

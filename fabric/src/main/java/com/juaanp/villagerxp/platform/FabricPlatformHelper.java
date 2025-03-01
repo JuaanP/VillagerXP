@@ -70,8 +70,8 @@ public class FabricPlatformHelper implements IPlatformHelper {
         common.setRequiresCrouching(config.requiresCrouching);
         common.setBottleXpMultiplier(config.bottleXpMultiplier);
         common.setOrbXpMultiplier(config.orbXpMultiplier);
-        common.setOrbRange(config.orbRange);
-        common.setShowOrbRanges(config.showOrbRanges);
+        common.setOrbAttractRange(config.orbAttractRange);
+        common.setOrbPickupRange(config.orbPickupRange);
     }
 
     private ConfigData createConfigData() {
@@ -83,8 +83,8 @@ public class FabricPlatformHelper implements IPlatformHelper {
         config.requiresCrouching = common.requiresCrouching();
         config.bottleXpMultiplier = common.getBottleXpMultiplier();
         config.orbXpMultiplier = common.getOrbXpMultiplier();
-        config.orbRange = common.getOrbRange();
-        config.showOrbRanges = common.getShowOrbRanges();
+        config.orbAttractRange = common.getOrbAttractRange();
+        config.orbPickupRange = common.getOrbPickupRange();
         return config;
     }
 
@@ -95,7 +95,7 @@ public class FabricPlatformHelper implements IPlatformHelper {
         boolean requiresCrouching = CommonConfig.getDefaultRequiresCrouching();
         float bottleXpMultiplier = CommonConfig.getDefaultBottleXpMultiplier();
         float orbXpMultiplier = CommonConfig.getDefaultOrbXpMultiplier();
-        double orbRange = CommonConfig.getDefaultOrbRange();
-        boolean showOrbRanges = CommonConfig.getDefaultShowOrbRanges();
+        double orbAttractRange = CommonConfig.getDefaultOrbAttractRange();
+        double orbPickupRange = CommonConfig.getDefaultOrbPickupRange();
     }
 }

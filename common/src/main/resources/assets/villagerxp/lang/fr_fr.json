@@ -1,34 +1,16 @@
 {
-  "text.autoconfig.villagerxp.title": "Configuration de VillagerXP",
   "villagerxp.config.section.no.villager.trading.common.toml.title": "Configuration de VillagerXP",
   "villagerxp.config.title": "Configuration de VillagerXP",
-  "villagerxp.config.section.title": "Paramètres de configuration",
 
-  "villagerxp.config.section.no.villager.trading.common.toml": "",
+  "villagerxp.config.category.bottles": "Paramètres des Fioles d'Enchantement",
+  "villagerxp.config.category.orbs": "Paramètres des Orbes d'Expérience",
 
-  "villagerxp.config.undo": "Annuler",
-  "villagerxp.config.undo.tooltip": "Annuler le dernier changement",
-  "villagerxp.config.reset.tooltip": "Réinitialiser aux valeurs par défaut",
+  "villagerxp.config.requireCtrl": "S'accroupir nécessaire",
+  "villagerxp.config.xpMultiplier": "Multiplicateur d'XP",
+  "villagerxp.config.orbAttractRange": "Portée d'Attraction",
+  "villagerxp.config.orbPickupRange": "Portée de Ramassage",
 
-  "villagerxp.config.xpAmount": "Montant de XP",
-  "villagerxp.config.xpAmount.tooltip": "Montant de XP donné aux villageois [(Peu) 1 <-> 150 (Maître Instantané)]",
-
-  "villagerxp.config.enableBottles": "Activer les Bouteilles",
-  "villagerxp.config.enableBottles.tooltip": "Autoriser l'utilisation de Bouteilles de XP sur les villageois",
-
-  "villagerxp.config.enableOrbs": "Activer les Orbes",
-  "villagerxp.config.enableOrbs.tooltip": "Autoriser les Orbes de XP à faire monter de niveau les villageois",
-
-  "villagerxp.config.requireCtrl": "Clic de Crouch avec Bouteille",
-  "villagerxp.config.requireCtrl.tooltip": "Nécessite de s'accroupir pour utiliser des Bouteilles de XP sur les villageois",
-
-  "villagerxp.config.bottleMultiplier": "Multiplicateur de XP de Bouteille",
-  "villagerxp.config.bottleMultiplier.tooltip": "Multiplicateur pour XP donné par les bouteilles [(Bas) 0.1x <-> 5.0x (Haut)]",
-
-  "villagerxp.config.orbMultiplier": "Multiplicateur de XP d'Orbe",
-  "villagerxp.config.orbMultiplier.tooltip": "Multiplicateur pour XP donné par les orbes [(Bas) 0.1x <-> 5.0x (Haut)]",
-
+  "villagerxp.config.enable": "Activer",
   "villagerxp.config.reset": "Réinitialiser",
-  "villagerxp.config.default": "Par défaut",
-  "villagerxp.config.orbRange": "Portée de l'Orbe"
+  "villagerxp.config.default": "Par défaut"
 }

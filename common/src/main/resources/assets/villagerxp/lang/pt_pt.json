@@ -1,34 +1,16 @@
 {
-  "text.autoconfig.villagerxp.title": "Configuração do VillagerXP",
   "villagerxp.config.section.no.villager.trading.common.toml.title": "Configuração do VillagerXP",
   "villagerxp.config.title": "Configuração do VillagerXP",
-  "villagerxp.config.section.title": "Configurações",
 
-  "villagerxp.config.section.no.villager.trading.common.toml": "",
+  "villagerxp.config.category.bottles": "Definições do Frasco de Encantamento",
+  "villagerxp.config.category.orbs": "Definições de Orbes de Experiência",
 
-  "villagerxp.config.undo": "Desfazer",
-  "villagerxp.config.undo.tooltip": "Desfazer a última alteração",
-  "villagerxp.config.reset.tooltip": "Restaurar os valores padrão",
+  "villagerxp.config.requireCtrl": "Exigir Agachamento",
+  "villagerxp.config.xpMultiplier": "Multiplicador de XP",
+  "villagerxp.config.orbAttractRange": "Raio de Atração",
+  "villagerxp.config.orbPickupRange": "Raio de Recolha",
 
-  "villagerxp.config.xpAmount": "Quantidade de XP",
-  "villagerxp.config.xpAmount.tooltip": "Quantidade de XP dada aos aldeões [(Baixo) 1 <-> 150 (Mestre Instantâneo)]",
-
-  "villagerxp.config.enableBottles": "Ativar Garrafas",
-  "villagerxp.config.enableBottles.tooltip": "Permitir o uso de Garrafas de XP em aldeões",
-
-  "villagerxp.config.enableOrbs": "Ativar Orbes",
-  "villagerxp.config.enableOrbs.tooltip": "Permitir Orbes de XP para subir de nível os aldeões",
-
-  "villagerxp.config.requireCtrl": "Clique de Agachar com Garrafa",
-  "villagerxp.config.requireCtrl.tooltip": "Requer agachar para usar Garrafas de XP em aldeões",
-
-  "villagerxp.config.bottleMultiplier": "Multiplicador de XP de Garrafa",
-  "villagerxp.config.bottleMultiplier.tooltip": "Multiplicador para XP dada por garrafas [(Baixo) 0.1x <-> 5.0x (Alto)]",
-
-  "villagerxp.config.orbMultiplier": "Multiplicador de XP de Orbe",
-  "villagerxp.config.orbMultiplier.tooltip": "Multiplicador para XP dada por orbes [(Baixo) 0.1x <-> 5.0x (Alto)]",
-
+  "villagerxp.config.enable": "Ativar",
   "villagerxp.config.reset": "Restaurar",
-  "villagerxp.config.default": "Padrão",
-  "villagerxp.config.orbRange": "Raio do Orbe"
+  "villagerxp.config.default": "Padrão"
 }

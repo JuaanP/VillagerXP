@@ -1,34 +1,16 @@
 {
-  "text.autoconfig.villagerxp.title": "Настройки VillagerXP",
   "villagerxp.config.section.no.villager.trading.common.toml.title": "Настройки VillagerXP",
   "villagerxp.config.title": "Настройки VillagerXP",
-  "villagerxp.config.section.title": "Настройки",
 
-  "villagerxp.config.section.no.villager.trading.common.toml": "",
+  "villagerxp.config.category.bottles": "Настройки Пузырьков Зачарования",
+  "villagerxp.config.category.orbs": "Настройки Сфер Опыта",
 
-  "villagerxp.config.undo": "Отменить",
-  "villagerxp.config.undo.tooltip": "Отменить последнее изменение",
-  "villagerxp.config.reset.tooltip": "Сбросить на значения по умолчанию",
+  "villagerxp.config.requireCtrl": "Требовать Приседание",
+  "villagerxp.config.xpMultiplier": "Множитель XP",
+  "villagerxp.config.orbAttractRange": "Дальность Притяжения",
+  "villagerxp.config.orbPickupRange": "Дальность Подбора",
 
-  "villagerxp.config.xpAmount": "Количество XP",
-  "villagerxp.config.xpAmount.tooltip": "Количество XP, выдаваемое жителям [(Низкое) 1 <-> 150 (Мгновенный Мастер)]",
-
-  "villagerxp.config.enableBottles": "Включить Бутылки",
-  "villagerxp.config.enableBottles.tooltip": "Разрешить использование Бутылок XP на жителях",
-
-  "villagerxp.config.enableOrbs": "Включить Орбы",
-  "villagerxp.config.enableOrbs.tooltip": "Разрешить Орбы XP для повышения уровня жителей",
-
-  "villagerxp.config.requireCtrl": "Клик с Приседанием с Бутылкой",
-  "villagerxp.config.requireCtrl.tooltip": "Требуется приседание для использования Бутылок XP на жителях",
-
-  "villagerxp.config.bottleMultiplier": "Множитель XP Бутылки",
-  "villagerxp.config.bottleMultiplier.tooltip": "Множитель для XP, получаемого от бутылок [(Низкий) 0.1x <-> 5.0x (Высокий)]",
-
-  "villagerxp.config.orbMultiplier": "Множитель XP Орба",
-  "villagerxp.config.orbMultiplier.tooltip": "Множитель для XP, получаемого от орбов [(Низкий) 0.1x <-> 5.0x (Высокий)]",
-
+  "villagerxp.config.enable": "Включить",
   "villagerxp.config.reset": "Сбросить",
-  "villagerxp.config.default": "По умолчанию",
-  "villagerxp.config.orbRange": "Дальность Орба"
+  "villagerxp.config.default": "По умолчанию"
 }

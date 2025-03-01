@@ -1,34 +1,16 @@
 {
-  "text.autoconfig.villagerxp.title": "VillagerXP設定",
   "villagerxp.config.section.no.villager.trading.common.toml.title": "VillagerXP設定",
   "villagerxp.config.title": "VillagerXP設定",
-  "villagerxp.config.section.title": "設定",
 
-  "villagerxp.config.section.no.villager.trading.common.toml": "",
+  "villagerxp.config.category.bottles": "エンチャントの瓶の設定",
+  "villagerxp.config.category.orbs": "経験値オーブの設定",
 
-  "villagerxp.config.undo": "元に戻す",
-  "villagerxp.config.undo.tooltip": "最後の変更を元に戻す",
-  "villagerxp.config.reset.tooltip": "デフォルト値にリセット",
+  "villagerxp.config.requireCtrl": "しゃがみが必要",
+  "villagerxp.config.xpMultiplier": "XP倍率",
+  "villagerxp.config.orbAttractRange": "引き寄せ範囲",
+  "villagerxp.config.orbPickupRange": "拾得範囲",
 
-  "villagerxp.config.xpAmount": "XP量",
-  "villagerxp.config.xpAmount.tooltip": "村人に与えられるXPの量 [(少ない) 1 <-> 150 (即座のマスター)]",
-
-  "villagerxp.config.enableBottles": "ボトルを有効にする",
-  "villagerxp.config.enableBottles.tooltip": "村人にXPボトルを使用することを許可",
-
-  "villagerxp.config.enableOrbs": "オーブを有効にする",
-  "villagerxp.config.enableOrbs.tooltip": "村人をレベルアップさせるためにXPオーブを許可",
-
-  "villagerxp.config.requireCtrl": "ボトルしゃがみクリック",
-  "villagerxp.config.requireCtrl.tooltip": "村人にXPボトルを使用するためにしゃがむ必要があります",
-
-  "villagerxp.config.bottleMultiplier": "ボトルXP倍率",
-  "villagerxp.config.bottleMultiplier.tooltip": "ボトルによって与えられるXPの倍率 [(低) 0.1x <-> 5.0x (高)]",
-
-  "villagerxp.config.orbMultiplier": "オーブXP倍率",
-  "villagerxp.config.orbMultiplier.tooltip": "オーブによって与えられるXPの倍率 [(低) 0.1x <-> 5.0x (高)]",
-
+  "villagerxp.config.enable": "有効化",
   "villagerxp.config.reset": "リセット",
-  "villagerxp.config.default": "デフォルト",
-  "villagerxp.config.orbRange": "オーブ範囲"
+  "villagerxp.config.default": "デフォルト"
 }

@@ -30,10 +30,12 @@ public class ExperienceOrbMixin {
     private void tick(CallbackInfo ci) {
         if (!villagerXP$config.isXpOrbsEnabled()) {return;}
 
-        double orbRange = villagerXP$config.getOrbRange();
-        double orbRangeSqr = orbRange * orbRange;
+        double attractRange = villagerXP$config.getOrbAttractRange();
+        double pickupRange = villagerXP$config.getOrbPickupRange();
+        
+        double orbRangeSqr = attractRange * attractRange;
 
-        Villager nearestVillager = villagerXP$getNearestVillager(orbRange);
+        Villager nearestVillager = villagerXP$getNearestVillager(attractRange);
 
         if (nearestVillager != null &&
                 villagerXP$utils.canLevelUp(nearestVillager) &&
@@ -48,14 +50,15 @@ public class ExperienceOrbMixin {
             double distanceToVillagerSqr = directionToVillager.lengthSqr();
 
             if (distanceToVillagerSqr < orbRangeSqr) {
-                double e = 1.0 - Math.sqrt(distanceToVillagerSqr) / orbRange;
+                double e = 1.0 - Math.sqrt(distanceToVillagerSqr) / attractRange;
                 this.villagerXP$orb.setDeltaMovement(
                         this.villagerXP$orb.getDeltaMovement().add(
                                 directionToVillager.normalize().scale(e * e * 0.1)
                         )
                 );
 
-                if(distanceToVillagerSqr < 9.0 && !villagerXP$level.isClientSide) {
+                double pickupRangeSqr = pickupRange * pickupRange;
+                if(distanceToVillagerSqr < pickupRangeSqr && !villagerXP$level.isClientSide) {
                     nearestVillager.take(this.villagerXP$orb, 1);
                     villagerXP$utils.giveXP(nearestVillager, villagerXP$level, villagerXP$config.getOrbXpMultiplier());
 

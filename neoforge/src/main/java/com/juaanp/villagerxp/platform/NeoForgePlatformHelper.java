@@ -15,8 +15,8 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
     public static final ModConfigSpec.BooleanValue REQUIRES_CROUCHING;
     public static final ModConfigSpec.DoubleValue BOTTLE_XP_MULTIPLIER;
     public static final ModConfigSpec.DoubleValue ORB_XP_MULTIPLIER;
-    public static final ModConfigSpec.DoubleValue ORB_RANGE;
-    public static final ModConfigSpec.BooleanValue SHOW_ORB_RANGES;
+    public static final ModConfigSpec.DoubleValue ORB_ATTRACT_RANGE;
+    public static final ModConfigSpec.DoubleValue ORB_PICKUP_RANGE;
     public static final ModConfigSpec SPEC;
 
     static {
@@ -43,22 +43,26 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
         BOTTLE_XP_MULTIPLIER = BUILDER
                 .comment("villagerxp.config.bottleMultiplier.tooltip")
                 .translation(Constants.MOD_ID + ".config.bottleMultiplier")
-                .defineInRange("bottleMultiplier", (double)CommonConfig.getDefaultBottleXpMultiplier(), 0.1, 5.0);
+                .defineInRange("bottleMultiplier", (double)CommonConfig.getDefaultBottleXpMultiplier(),
+                                Constants.MIN_XP_MULTIPLIER_RANGE, Constants.MAX_XP_MULTIPLIER_RANGE);
 
         ORB_XP_MULTIPLIER = BUILDER
                 .comment("villagerxp.config.orbMultiplier.tooltip")
                 .translation(Constants.MOD_ID + ".config.orbMultiplier")
-                .defineInRange("orbMultiplier", (double)CommonConfig.getDefaultOrbXpMultiplier(), 0.1, 5.0);
+                .defineInRange("orbMultiplier", (double)CommonConfig.getDefaultOrbXpMultiplier(),
+                                Constants.MIN_XP_MULTIPLIER_RANGE, Constants.MAX_XP_MULTIPLIER_RANGE);
 
-        ORB_RANGE = BUILDER
-                .comment("villagerxp.config.orbRange.tooltip")
-                .translation(Constants.MOD_ID + ".config.orbRange")
-                .defineInRange("orbRange", CommonConfig.getDefaultOrbRange(), 1.0, 32.0);
+        ORB_ATTRACT_RANGE = BUILDER
+                .comment("villagerxp.config.orbAttractRange.tooltip")
+                .translation(Constants.MOD_ID + ".config.orbAttractRange")
+                .defineInRange("orbAttractRange", CommonConfig.getDefaultOrbAttractRange(),
+                                Constants.MIN_ORB_ATTRACT_RANGE, Constants.MAX_ORB_ATTRACT_RANGE);
 
-        SHOW_ORB_RANGES = BUILDER
-                .comment("villagerxp.config.showOrbRanges.tooltip")
-                .translation(Constants.MOD_ID + ".config.showOrbRanges")
-                .define("showOrbRanges", CommonConfig.getDefaultShowOrbRanges());
+        ORB_PICKUP_RANGE = BUILDER
+                .comment("villagerxp.config.orbPickupRange.tooltip")
+                .translation(Constants.MOD_ID + ".config.orbPickupRange")
+                .defineInRange("orbPickupRange", CommonConfig.getDefaultOrbPickupRange(),
+                                Constants.MIN_ORB_PICKUP_RANGE, Constants.MAX_ORB_PICKUP_RANGE);
 
         SPEC = BUILDER.build();
     }
@@ -96,8 +100,8 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
         common.setRequiresCrouching(REQUIRES_CROUCHING.get());
         common.setBottleXpMultiplier(BOTTLE_XP_MULTIPLIER.get().floatValue());
         common.setOrbXpMultiplier(ORB_XP_MULTIPLIER.get().floatValue());
-        common.setOrbRange(ORB_RANGE.get());
-        common.setShowOrbRanges(SHOW_ORB_RANGES.get());
+        common.setOrbAttractRange(ORB_ATTRACT_RANGE.get());
+        common.setOrbPickupRange(ORB_PICKUP_RANGE.get());
     }
 
     private void saveToNeoForgeConfig() {
@@ -108,8 +112,8 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
         REQUIRES_CROUCHING.set(common.requiresCrouching());
         BOTTLE_XP_MULTIPLIER.set((double)common.getBottleXpMultiplier());
         ORB_XP_MULTIPLIER.set((double)common.getOrbXpMultiplier());
-        ORB_RANGE.set(common.getOrbRange());
-        SHOW_ORB_RANGES.set(common.getShowOrbRanges());
+        ORB_ATTRACT_RANGE.set(common.getOrbAttractRange());
+        ORB_PICKUP_RANGE.set(common.getOrbPickupRange());
         // No need to call SPEC.save() as NeoForge handles this internally
     }
 }
