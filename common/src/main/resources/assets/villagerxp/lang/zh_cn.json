@@ -1,0 +1,34 @@
+{
+  "text.autoconfig.villagerxp.title": "VillagerXP配置",
+  "villagerxp.config.section.no.villager.trading.common.toml.title": "VillagerXP配置",
+  "villagerxp.config.title": "VillagerXP配置",
+  "villagerxp.config.section.title": "配置设置",
+
+  "villagerxp.config.section.no.villager.trading.common.toml": "",
+
+  "villagerxp.config.undo": "撤销",
+  "villagerxp.config.undo.tooltip": "撤销最后的更改",
+  "villagerxp.config.reset.tooltip": "重置为默认值",
+
+  "villagerxp.config.xpAmount": "XP数量",
+  "villagerxp.config.xpAmount.tooltip": "给予村民的XP数量 [(少) 1 <-> 150 (瞬间大师)]",
+
+  "villagerxp.config.enableBottles": "启用瓶子",
+  "villagerxp.config.enableBottles.tooltip": "允许在村民身上使用XP瓶子",
+
+  "villagerxp.config.enableOrbs": "启用光球",
+  "villagerxp.config.enableOrbs.tooltip": "允许使用XP光球来提升村民等级",
+
+  "villagerxp.config.requireCtrl": "瓶子下蹲点击",
+  "villagerxp.config.requireCtrl.tooltip": "使用XP瓶子在村民身上需要下蹲",
+
+  "villagerxp.config.bottleMultiplier": "瓶子XP倍数",
+  "villagerxp.config.bottleMultiplier.tooltip": "瓶子给予的XP倍数 [(低) 0.1x <-> 5.0x (高)]",
+
+  "villagerxp.config.orbMultiplier": "光球XP倍数",
+  "villagerxp.config.orbMultiplier.tooltip": "光球给予的XP倍数 [(低) 0.1x <-> 5.0x (高)]",
+
+  "villagerxp.config.reset": "重置",
+  "villagerxp.config.default": "默认",
+  "villagerxp.config.orbRange": "光球范围"
+}

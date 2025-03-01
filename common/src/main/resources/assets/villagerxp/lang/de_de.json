@@ -1,0 +1,34 @@
+{
+  "text.autoconfig.villagerxp.title": "VillagerXP-Konfiguration",
+  "villagerxp.config.section.no.villager.trading.common.toml.title": "VillagerXP-Konfiguration",
+  "villagerxp.config.title": "VillagerXP-Konfiguration",
+  "villagerxp.config.section.title": "Konfigurationseinstellungen",
+
+  "villagerxp.config.section.no.villager.trading.common.toml": "",
+
+  "villagerxp.config.undo": "Rückgängig",
+  "villagerxp.config.undo.tooltip": "Die letzte Änderung rückgängig machen",
+  "villagerxp.config.reset.tooltip": "Auf Standardwerte zurücksetzen",
+
+  "villagerxp.config.xpAmount": "XP-Betrag",
+  "villagerxp.config.xpAmount.tooltip": "Menge an XP, die den Dorfbewohnern gegeben wird [(Wenig) 1 <-> 150 (Sofort Meister)]",
+
+  "villagerxp.config.enableBottles": "Flaschen aktivieren",
+  "villagerxp.config.enableBottles.tooltip": "Erlauben, XP-Flaschen bei Dorfbewohnern zu verwenden",
+
+  "villagerxp.config.enableOrbs": "Orbs aktivieren",
+  "villagerxp.config.enableOrbs.tooltip": "Erlauben, XP-Orbs, um Dorfbewohner aufzuleveln",
+
+  "villagerxp.config.requireCtrl": "Flaschen-Crouch-Klick",
+  "villagerxp.config.requireCtrl.tooltip": "Erfordert das Ducken, um XP-Flaschen bei Dorfbewohnern zu verwenden",
+
+  "villagerxp.config.bottleMultiplier": "Flaschen-XP-Multiplikator",
+  "villagerxp.config.bottleMultiplier.tooltip": "Multiplikator für XP, die durch Flaschen gegeben wird [(Niedrig) 0.1x <-> 5.0x (Hoch)]",
+
+  "villagerxp.config.orbMultiplier": "Orb-XP-Multiplikator",
+  "villagerxp.config.orbMultiplier.tooltip": "Multiplikator für XP, die durch Orbs gegeben wird [(Niedrig) 0.1x <-> 5.0x (Hoch)]",
+
+  "villagerxp.config.reset": "Zurücksetzen",
+  "villagerxp.config.default": "Standard",
+  "villagerxp.config.orbRange": "Orb-Reichweite"
+}

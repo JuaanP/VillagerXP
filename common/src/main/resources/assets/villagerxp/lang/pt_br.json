@@ -1,0 +1,34 @@
+{
+  "text.autoconfig.villagerxp.title": "Configuração do VillagerXP",
+  "villagerxp.config.section.no.villager.trading.common.toml.title": "Configuração do VillagerXP",
+  "villagerxp.config.title": "Configuração do VillagerXP",
+  "villagerxp.config.section.title": "Configurações",
+
+  "villagerxp.config.section.no.villager.trading.common.toml": "",
+
+  "villagerxp.config.undo": "Desfazer",
+  "villagerxp.config.undo.tooltip": "Desfazer a última alteração",
+  "villagerxp.config.reset.tooltip": "Redefinir para os valores padrão",
+
+  "villagerxp.config.xpAmount": "Quantidade de XP",
+  "villagerxp.config.xpAmount.tooltip": "Quantidade de XP dada aos aldeões [(Baixo) 1 <-> 150 (Mestre Instantâneo)]",
+
+  "villagerxp.config.enableBottles": "Habilitar Garrafas",
+  "villagerxp.config.enableBottles.tooltip": "Permitir o uso de Garrafas de XP em aldeões",
+
+  "villagerxp.config.enableOrbs": "Habilitar Orbes",
+  "villagerxp.config.enableOrbs.tooltip": "Permitir Orbes de XP para subir de nível os aldeões",
+
+  "villagerxp.config.requireCtrl": "Clique de Agachar com Garrafa",
+  "villagerxp.config.requireCtrl.tooltip": "Requer agachar para usar Garrafas de XP em aldeões",
+
+  "villagerxp.config.bottleMultiplier": "Multiplicador de XP de Garrafa",
+  "villagerxp.config.bottleMultiplier.tooltip": "Multiplicador para XP dada por garrafas [(Baixo) 0.1x <-> 5.0x (Alto)]",
+
+  "villagerxp.config.orbMultiplier": "Multiplicador de XP de Orbe",
+  "villagerxp.config.orbMultiplier.tooltip": "Multiplicador para XP dada por orbes [(Baixo) 0.1x <-> 5.0x (Alto)]",
+
+  "villagerxp.config.reset": "Redefinir",
+  "villagerxp.config.default": "Padrão",
+  "villagerxp.config.orbRange": "Raio do Orbe"
+}

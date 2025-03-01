@@ -1,0 +1,15 @@
+{
+  "villagerxp.config.section.no.villager.trading.common.toml.title": "VillagerXP config",
+  "villagerxp.config.title": "VillagerXP config",
+
+  "villagerxp.config.category.bottles": "Bottle o' Enchanting Settings",
+  "villagerxp.config.category.orbs": "Experience Orb Settings",
+
+  "villagerxp.config.requireCtrl": "Require Crouching",
+  "villagerxp.config.xpMultiplier": "XP Multiplier",
+  "villagerxp.config.orbRange": "Pickup Range",
+
+  "villagerxp.config.enable": "Enable",
+  "villagerxp.config.reset": "Reset",
+  "villagerxp.config.default": "Default"
+}

@@ -1,0 +1,22 @@
+plugins {
+    // see https://fabricmc.net/develop/ for new versions
+    id 'fabric-loom' version '1.8-SNAPSHOT' apply false
+    // see https://projects.neoforged.net/neoforged/moddevgradle for new versions
+    id 'net.neoforged.moddev' version '2.0.62-beta' apply false
+}
+
+allprojects {
+    apply plugin: 'idea'
+    
+    idea {
+        module {
+            outputDir = file("build/classes/main")
+            testOutputDir = file("build/classes/test")
+            inheritOutputDirs = false
+            
+            excludeDirs += file('run')
+            excludeDirs += file('.gradle')
+            excludeDirs += file('build')
+        }
+    }
+}
