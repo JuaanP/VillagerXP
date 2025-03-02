@@ -27,14 +27,14 @@
         "${mod_id}.fabric.mixins.json"
     ],
     "depends": {
-        "fabricloader": ">=${fabric_loader_version}",
+        "fabricloader": "*",
         "fabric-api": "*",
-        "minecraft": ">=${minecraft_version}",
+        "minecraft": "1.21.x",
         "java": ">=${java_version}"
     },
     "suggests": {
         "another-mod": "*",
-        "modmenu": ">=9.0.0"
+        "modmenu": "*"
     },
     "resources": [
         {
