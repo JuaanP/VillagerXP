@@ -1,7 +1,7 @@
 package com.juaanp.villagerxp;
 
 import com.juaanp.villagerxp.client.ConfigScreenBase;
-import com.juaanp.villagerxp.platform.NeoForgePlatformHelper;
+import com.juaanp.villagerxp.platform.ForgePlatformHelper;
 import net.minecraft.client.Minecraft;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
@@ -20,19 +20,19 @@ import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
 @Mod(Constants.MOD_ID)
-public class VillagerXPNeoForge {
+public class VillagerXPForge {
     private static final Logger LOGGER = LogUtils.getLogger();
     private final ModContainer modContainer;
 
-    public VillagerXPNeoForge(IEventBus modEventBus, ModContainer modContainer) {
+    public VillagerXPForge(IEventBus modEventBus, ModContainer modContainer) {
         this.modContainer = modContainer;
         modEventBus.addListener(this::commonSetup);
 
         // Registramos los eventos de juego en el FORGE bus, no en el MOD bus
-        NeoForge.EVENT_BUS.register(new EventHandlerNeoForge());
+        NeoForge.EVENT_BUS.register(new EventHandlerForge());
         NeoForge.EVENT_BUS.register(this);
 
-        modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgePlatformHelper.SPEC);
+        modContainer.registerConfig(ModConfig.Type.COMMON, ForgePlatformHelper.SPEC);
 
         CommonClass.init();
     }

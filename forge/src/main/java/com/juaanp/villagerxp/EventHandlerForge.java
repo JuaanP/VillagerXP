@@ -3,10 +3,10 @@ package com.juaanp.villagerxp;
 import com.juaanp.villagerxp.config.CommonConfig;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.npc.Villager;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class EventHandlerForge {
+public class EventHandlerNeoForge {
     private static final VillagerEventHandler handler = new VillagerEventHandler(CommonConfig.getInstance());
 
     @SubscribeEvent
