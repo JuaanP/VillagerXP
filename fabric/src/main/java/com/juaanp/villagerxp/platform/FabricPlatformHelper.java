@@ -72,6 +72,7 @@ public class FabricPlatformHelper implements IPlatformHelper {
         common.setOrbXpMultiplier(config.orbXpMultiplier);
         common.setOrbAttractRange(config.orbAttractRange);
         common.setOrbPickupRange(config.orbPickupRange);
+        common.setLevelsPerBottle(config.levelsPerBottle);
     }
 
     private ConfigData createConfigData() {
@@ -85,6 +86,7 @@ public class FabricPlatformHelper implements IPlatformHelper {
         config.orbXpMultiplier = common.getOrbXpMultiplier();
         config.orbAttractRange = common.getOrbAttractRange();
         config.orbPickupRange = common.getOrbPickupRange();
+        config.levelsPerBottle = common.getLevelsPerBottle();
         return config;
     }
 
@@ -97,5 +99,6 @@ public class FabricPlatformHelper implements IPlatformHelper {
         float orbXpMultiplier = CommonConfig.getDefaultOrbXpMultiplier();
         double orbAttractRange = CommonConfig.getDefaultOrbAttractRange();
         double orbPickupRange = CommonConfig.getDefaultOrbPickupRange();
+        int levelsPerBottle = CommonConfig.getDefaultLevelsPerBottle();
     }
 }

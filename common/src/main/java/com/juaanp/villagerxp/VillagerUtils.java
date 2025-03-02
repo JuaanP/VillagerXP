@@ -28,17 +28,15 @@ public class VillagerUtils {
         RandomSource random = villager.getRandom();
 
         villager.setVillagerXp((int)(villager.getVillagerXp() + config.getXpAmount() * multiplier));
-        villager.playSound(
-                SoundEvents.EXPERIENCE_ORB_PICKUP,
-                0.1F,
-                (random.nextFloat() - random.nextFloat()) * 0.35F + 0.9F);
+        playSound(villager, random);
 
         if (level instanceof ServerLevel serverLevel){
             spawnXPParticles(villager, serverLevel, random);
             villager.playCelebrateSound();
 
             if (shouldLevelUp(villager)) {
-                levelUp(villager, serverLevel, random);
+                levelUp(villager);
+                spawnLevelUpParticles(villager);
             }
         }
     }
@@ -53,16 +51,24 @@ public class VillagerUtils {
         return VillagerData.canLevelUp(i);
     }
 
-    public void levelUp(Villager villager, ServerLevel serverLevel, RandomSource random){
+    public void levelUp(Villager villager){
         if (villager instanceof VillagerAccessor accessor) {
             accessor.invokeIncreaseMerchantCareer();
             accessor.invokeResendOffersToTradingPlayer();
-            villager.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 0));
+            resetLevelXP(villager, villager.getVillagerData().getLevel());
         }
+    }
+
+    public void resetLevelXP(Villager villager, int level) {
+        villager.setVillagerXp(VillagerData.getMinXpPerLevel(level));
     }
 
     public boolean unemployed(Villager villager){
         return villager.getVillagerData().getProfession() == VillagerProfession.NONE;
+    }
+
+    public void spawnLevelUpParticles(Villager villager) {
+        villager.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 0));
     }
 
     public void spawnXPParticles(Villager villager, ServerLevel serverLevel, RandomSource random){
@@ -80,5 +86,12 @@ public class VillagerUtils {
                     0
             );
         }
+    }
+
+    public void playSound(Villager villager, RandomSource random){
+        villager.playSound(
+                SoundEvents.EXPERIENCE_ORB_PICKUP,
+                0.1F,
+                (random.nextFloat() - random.nextFloat()) * 0.35F + 0.9F);
     }
 }

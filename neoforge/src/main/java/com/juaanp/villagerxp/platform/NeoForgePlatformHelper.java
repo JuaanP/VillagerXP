@@ -17,6 +17,7 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
     public static final ModConfigSpec.DoubleValue ORB_XP_MULTIPLIER;
     public static final ModConfigSpec.DoubleValue ORB_ATTRACT_RANGE;
     public static final ModConfigSpec.DoubleValue ORB_PICKUP_RANGE;
+    public static final ModConfigSpec.IntValue LEVELS_PER_BOTTLE;
     public static final ModConfigSpec SPEC;
 
     static {
@@ -64,6 +65,12 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
                 .defineInRange("orbPickupRange", CommonConfig.getDefaultOrbPickupRange(),
                                 Constants.MIN_ORB_PICKUP_RANGE, Constants.MAX_ORB_PICKUP_RANGE);
 
+        LEVELS_PER_BOTTLE = BUILDER
+                .comment("villagerxp.config.levelsPerBottle.tooltip")
+                .translation(Constants.MOD_ID + ".config.levelsPerBottle")
+                .defineInRange("levelsPerBottle", CommonConfig.getDefaultLevelsPerBottle(),
+                               Constants.MIN_LEVELS_PER_BOTTLE, Constants.MAX_LEVELS_PER_BOTTLE);
+
         SPEC = BUILDER.build();
     }
 
@@ -102,6 +109,7 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
         common.setOrbXpMultiplier(ORB_XP_MULTIPLIER.get().floatValue());
         common.setOrbAttractRange(ORB_ATTRACT_RANGE.get());
         common.setOrbPickupRange(ORB_PICKUP_RANGE.get());
+        common.setLevelsPerBottle(LEVELS_PER_BOTTLE.get());
     }
 
     private void saveToNeoForgeConfig() {
@@ -114,6 +122,7 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
         ORB_XP_MULTIPLIER.set((double)common.getOrbXpMultiplier());
         ORB_ATTRACT_RANGE.set(common.getOrbAttractRange());
         ORB_PICKUP_RANGE.set(common.getOrbPickupRange());
+        LEVELS_PER_BOTTLE.set(common.getLevelsPerBottle());
         // No need to call SPEC.save() as NeoForge handles this internally
     }
 }

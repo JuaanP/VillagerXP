@@ -1,5 +1,6 @@
 package com.juaanp.villagerxp;
 
+import net.minecraft.world.entity.npc.VillagerData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,4 +30,8 @@ public class Constants {
 
 	// Tolerancia para comparaciones de valores de punto flotante
 	public static final double FLOAT_COMPARISON_EPSILON = 0.05;
+
+	public static final int DEFAULT_LEVELS_PER_BOTTLE = 0; // 0 = Auto, 5 = Max
+	public static final int MIN_LEVELS_PER_BOTTLE = 0;
+	public static final int MAX_LEVELS_PER_BOTTLE = VillagerData.MAX_VILLAGER_LEVEL - 1;
 }

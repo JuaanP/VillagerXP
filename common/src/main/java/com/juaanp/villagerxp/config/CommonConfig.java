@@ -15,6 +15,7 @@ public class CommonConfig {
     private float orbXpMultiplier;
     private double orbAttractRange;
     private double orbPickupRange;
+    private int levelsPerBottle;
 
     // Private constructor for singleton
     private CommonConfig() {
@@ -27,6 +28,7 @@ public class CommonConfig {
         this.orbXpMultiplier = DEFAULT_ORBS_XP_MULTIPLIER;
         this.orbAttractRange = DEFAULT_ORB_ATTRACT_RANGE;
         this.orbPickupRange = DEFAULT_ORB_PICKUP_RANGE;
+        this.levelsPerBottle = DEFAULT_LEVELS_PER_BOTTLE;
     }
 
     public static CommonConfig getInstance() {
@@ -67,6 +69,10 @@ public class CommonConfig {
 
     public static double getDefaultOrbPickupRange() {
         return DEFAULT_ORB_PICKUP_RANGE;
+    }
+
+    public static int getDefaultLevelsPerBottle() {
+        return DEFAULT_LEVELS_PER_BOTTLE;
     }
 
     public int getXpAmount() {
@@ -134,5 +140,13 @@ public class CommonConfig {
         if (this.orbAttractRange < orbPickupRange) {
             this.orbAttractRange = orbPickupRange;
         }
+    }
+
+    public int getLevelsPerBottle() {
+        return levelsPerBottle;
+    }
+
+    public void setLevelsPerBottle(int levelsPerBottle) {
+        this.levelsPerBottle = levelsPerBottle;
     }
 }

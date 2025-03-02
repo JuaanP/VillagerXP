@@ -59,21 +59,28 @@ public class ConfigScreenBase extends OptionsSubScreen {
                 getBottleXpMultiplier() != CommonConfig.getDefaultBottleXpMultiplier() ||
                 getOrbXpMultiplier() != CommonConfig.getDefaultOrbXpMultiplier() ||
                 getOrbAttractRange() != CommonConfig.getDefaultOrbAttractRange() ||
-                getOrbPickupRange() != CommonConfig.getDefaultOrbPickupRange();
+                getOrbPickupRange() != CommonConfig.getDefaultOrbPickupRange() ||
+                getLevelsPerBottle() != CommonConfig.getDefaultLevelsPerBottle();
     }
 
     private void resetToDefaults() {
+        // Primero configuramos pickup range
+        setOrbPickupRange(CommonConfig.getDefaultOrbPickupRange());
+        // Después configuramos attract range
+        setOrbAttractRange(CommonConfig.getDefaultOrbAttractRange());
+        
+        // El resto de los resets igual
         setXpAmount(CommonConfig.getDefaultXpAmount());
         setXpBottlesEnabled(CommonConfig.getDefaultXpBottlesEnabled());
         setXpOrbsEnabled(CommonConfig.getDefaultXpOrbsEnabled());
         setRequireCrouching(CommonConfig.getDefaultRequiresCrouching());
         setBottleXpMultiplier(CommonConfig.getDefaultBottleXpMultiplier());
         setOrbXpMultiplier(CommonConfig.getDefaultOrbXpMultiplier());
-        setOrbAttractRange(CommonConfig.getDefaultOrbAttractRange());
-        setOrbPickupRange(CommonConfig.getDefaultOrbPickupRange());
-
+        setLevelsPerBottle(CommonConfig.getDefaultLevelsPerBottle());
+        
         saveConfig();
-
+        
+        // Recargar la pantalla
         this.minecraft.setScreen(this.lastScreen);
         this.minecraft.setScreen(new ConfigScreenBase(this.lastScreen, this.options));
     }
@@ -87,6 +94,7 @@ public class ConfigScreenBase extends OptionsSubScreen {
     private Float lastOrbMultiplier = null;
     private Double lastOrbAttractRange = null;
     private Double lastOrbPickupRange = null;
+    private Integer lastLevelsPerBottle = null;
     private Boolean lastShowOrbRanges = null; // Add this missing field
 
     @Override
@@ -181,6 +189,25 @@ public class ConfigScreenBase extends OptionsSubScreen {
                 this::setOrbPickupRange
         );
 
+        OptionInstance<Integer> levelsPerBottleOption = new OptionInstance<>(
+                "villagerxp.config.levelsPerBottle",
+                OptionInstance.noTooltip(),
+                (component, value) -> {
+                    Component display;
+                    if (value == Constants.MIN_LEVELS_PER_BOTTLE) {
+                        display = Component.translatable("villagerxp.config.auto");
+                    } else if (value == Constants.MAX_LEVELS_PER_BOTTLE) {
+                        display = Component.translatable("villagerxp.config.max");
+                    } else {
+                        display = Component.literal(String.valueOf(value));
+                    }
+                    return component.copy().append(": ").append(display);
+                },
+                new OptionInstance.IntRange(Constants.MIN_LEVELS_PER_BOTTLE, Constants.MAX_LEVELS_PER_BOTTLE),
+                getLevelsPerBottle(),
+                this::setLevelsPerBottle
+        );
+
         // Create header widgets for categories
         StringWidget orbsHeader = new StringWidget(ORBS_CATEGORY, this.font);
         StringWidget bottlesHeader = new StringWidget(BOTTLES_CATEGORY, this.font);
@@ -202,6 +229,7 @@ public class ConfigScreenBase extends OptionsSubScreen {
         this.list.addSmall(bottlesHeader, null);
         this.list.addBig(bottleToggle);
         this.list.addBig(bottleMultiplier);
+        this.list.addBig(levelsPerBottleOption);
         this.list.addBig(crouchToggle);
     }
 
@@ -214,6 +242,7 @@ public class ConfigScreenBase extends OptionsSubScreen {
         lastOrbMultiplier = getOrbXpMultiplier();
         lastOrbAttractRange = getOrbAttractRange();
         lastOrbPickupRange = getOrbPickupRange();
+        lastLevelsPerBottle = getLevelsPerBottle();
     }
 
     private static class EmptyWidget extends AbstractWidget {
@@ -301,6 +330,14 @@ public class ConfigScreenBase extends OptionsSubScreen {
 
     protected void setOrbPickupRange(double orbPickupRange) {
         CommonConfig.getInstance().setOrbPickupRange(orbPickupRange);
+    }
+
+    protected int getLevelsPerBottle() {
+        return CommonConfig.getInstance().getLevelsPerBottle();
+    }
+
+    protected void setLevelsPerBottle(int levels) {
+        CommonConfig.getInstance().setLevelsPerBottle(levels);
     }
 
     protected void saveConfig() {
