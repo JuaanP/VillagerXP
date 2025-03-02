@@ -2,23 +2,23 @@ package com.juaanp.villagerxp.platform;
 
 import com.juaanp.villagerxp.Constants;
 import com.juaanp.villagerxp.config.CommonConfig;
-import net.neoforged.fml.ModList;
-import net.neoforged.fml.loading.FMLLoader;
-import net.neoforged.neoforge.common.ModConfigSpec;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.loading.FMLLoader;
+import net.minecraftforge.common.ForgeConfigSpec;
 
-public class NeoForgePlatformHelper implements IPlatformHelper {
-    // Keep the NeoForge config spec definition here
-    private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
-    public static final ModConfigSpec.IntValue XP_AMOUNT;
-    public static final ModConfigSpec.BooleanValue ENABLE_XP_BOTTLES;
-    public static final ModConfigSpec.BooleanValue ENABLE_XP_ORBS;
-    public static final ModConfigSpec.BooleanValue REQUIRES_CROUCHING;
-    public static final ModConfigSpec.DoubleValue BOTTLE_XP_MULTIPLIER;
-    public static final ModConfigSpec.DoubleValue ORB_XP_MULTIPLIER;
-    public static final ModConfigSpec.DoubleValue ORB_ATTRACT_RANGE;
-    public static final ModConfigSpec.DoubleValue ORB_PICKUP_RANGE;
-    public static final ModConfigSpec.IntValue LEVELS_PER_BOTTLE;
-    public static final ModConfigSpec SPEC;
+public class ForgePlatformHelper implements IPlatformHelper {
+    // Keep the Forge config spec definition here
+    private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
+    public static final ForgeConfigSpec.IntValue XP_AMOUNT;
+    public static final ForgeConfigSpec.BooleanValue ENABLE_XP_BOTTLES;
+    public static final ForgeConfigSpec.BooleanValue ENABLE_XP_ORBS;
+    public static final ForgeConfigSpec.BooleanValue REQUIRES_CROUCHING;
+    public static final ForgeConfigSpec.DoubleValue BOTTLE_XP_MULTIPLIER;
+    public static final ForgeConfigSpec.DoubleValue ORB_XP_MULTIPLIER;
+    public static final ForgeConfigSpec.DoubleValue ORB_ATTRACT_RANGE;
+    public static final ForgeConfigSpec.DoubleValue ORB_PICKUP_RANGE;
+    public static final ForgeConfigSpec.IntValue LEVELS_PER_BOTTLE;
+    public static final ForgeConfigSpec SPEC;
 
     static {
         XP_AMOUNT = BUILDER
@@ -76,7 +76,7 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
 
     @Override
     public String getPlatformName() {
-        return "NeoForge";
+        return "Forge";
     }
 
     @Override
@@ -96,7 +96,7 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
 
     @Override
     public void saveConfig() {
-        saveToNeoForgeConfig();
+        saveToForgeConfig();
     }
 
     private void applyToCommonConfig() {
@@ -112,7 +112,7 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
         common.setLevelsPerBottle(LEVELS_PER_BOTTLE.get());
     }
 
-    private void saveToNeoForgeConfig() {
+    private void saveToForgeConfig() {
         CommonConfig common = CommonConfig.getInstance();
         XP_AMOUNT.set(common.getXpAmount());
         ENABLE_XP_BOTTLES.set(common.isXpBottlesEnabled());
@@ -123,6 +123,6 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
         ORB_ATTRACT_RANGE.set(common.getOrbAttractRange());
         ORB_PICKUP_RANGE.set(common.getOrbPickupRange());
         LEVELS_PER_BOTTLE.set(common.getLevelsPerBottle());
-        // No need to call SPEC.save() as NeoForge handles this internally
+        // No need to call SPEC.save() as Forge handles this internally
     }
 }

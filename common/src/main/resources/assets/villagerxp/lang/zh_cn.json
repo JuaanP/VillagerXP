@@ -5,12 +5,17 @@
   "villagerxp.config.category.bottles": "附魔之瓶设置",
   "villagerxp.config.category.orbs": "经验球设置",
 
-  "villagerxp.config.requireCtrl": "需要下蹲",
-  "villagerxp.config.xpMultiplier": "经验倍数",
-  "villagerxp.config.orbAttractRange": "吸引范围",
-  "villagerxp.config.orbPickupRange": "拾取范围",
+  "villagerxp.config.requireCtrl": "经验瓶需要下蹲",
 
-  "villagerxp.config.enable": "启用",
+  "villagerxp.config.xpMultiplierBottles": "瓶子经验倍数",
+  "villagerxp.config.xpMultiplierOrbs": "球体经验倍数",
+
+  "villagerxp.config.orbAttractRange": "经验球吸引范围",
+  "villagerxp.config.orbPickupRange": "经验球拾取范围",
+
+  "villagerxp.config.enableBottles": "启用经验瓶",
+  "villagerxp.config.enableOrbs": "启用经验球",
+
   "villagerxp.config.reset": "重置",
   "villagerxp.config.default": "默认",
 

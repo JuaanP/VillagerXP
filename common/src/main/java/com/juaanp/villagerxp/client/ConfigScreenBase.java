@@ -8,113 +8,79 @@ import net.minecraft.client.Options;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.LinearLayout;
+import net.minecraft.client.gui.components.OptionsList;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.options.OptionsSubScreen;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 
 import static com.juaanp.villagerxp.Constants.*;
 
-public class ConfigScreenBase extends OptionsSubScreen {
+public class ConfigScreenBase extends Screen {
     private static final Component TITLE = Component.translatable("villagerxp.config.title");
     private static final Component RESET = Component.translatable("villagerxp.config.reset");
     private static final Component ORBS_CATEGORY = Component.translatable("villagerxp.config.category.orbs");
     private static final Component BOTTLES_CATEGORY = Component.translatable("villagerxp.config.category.bottles");
 
+    protected final Screen lastScreen;
     protected final Options options;
     protected Button resetButton;
-    protected final Button doneButton = Button.builder(CommonComponents.GUI_DONE, button -> onClose()).width(Button.SMALL_WIDTH).build();
+    protected Button doneButton;
+    protected OptionsList list;
 
     public ConfigScreenBase(Screen lastScreen, Options options) {
-        super(lastScreen, options, TITLE);
+        super(TITLE);
+        this.lastScreen = lastScreen;
         this.options = options;
     }
 
     @Override
+    protected void init() {
+        this.list = new OptionsList(this.minecraft, this.width, this.height - 64, 32, 25);
+
+        // Create reset and done buttons
+        this.resetButton = Button.builder(RESET, button -> resetToDefaults())
+                .pos(this.width / 2 - 155, this.height - 29)
+                .size(150, 20)
+                .build();
+
+        this.doneButton = Button.builder(CommonComponents.GUI_DONE, button -> onClose())
+                .pos(this.width / 2 + 5, this.height - 29)
+                .size(150, 20)
+                .build();
+
+        this.addRenderableWidget(this.resetButton);
+        this.addRenderableWidget(this.doneButton);
+
+        addOptions();
+
+        this.addRenderableWidget(list);
+
+        // Initialize tracking fields
+        initializeTrackingFields();
+    }
+
+    @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
+        this.renderBackground(graphics, mouseX, mouseY, partialTick);
+        this.list.render(graphics, mouseX, mouseY, partialTick);
+        graphics.drawCenteredString(this.font, this.title, this.width / 2, 5, 16777215);
+
         setResetButtonState(isAnyNonDefault());
+
         super.render(graphics, mouseX, mouseY, partialTick);
     }
 
-    private void createResetButton() {
-        resetButton = Button.builder(RESET, button -> resetToDefaults())
-                .width(Button.SMALL_WIDTH)
-                .build();
-    }
-
-    protected void setResetButtonState(boolean state) {
-        if (resetButton != null) {
-            resetButton.active = state;
-        }
-    }
-
-    protected boolean isAnyNonDefault() {
-        return getXpAmount() != CommonConfig.getDefaultXpAmount() ||
-                getXpBottlesEnabled() != CommonConfig.getDefaultXpBottlesEnabled() ||
-                getXpOrbsEnabled() != CommonConfig.getDefaultXpOrbsEnabled() ||
-                getRequireCrouching() != CommonConfig.getDefaultRequiresCrouching() ||
-                getBottleXpMultiplier() != CommonConfig.getDefaultBottleXpMultiplier() ||
-                getOrbXpMultiplier() != CommonConfig.getDefaultOrbXpMultiplier() ||
-                getOrbAttractRange() != CommonConfig.getDefaultOrbAttractRange() ||
-                getOrbPickupRange() != CommonConfig.getDefaultOrbPickupRange() ||
-                getLevelsPerBottle() != CommonConfig.getDefaultLevelsPerBottle();
-    }
-
-    private void resetToDefaults() {
-        // Primero configuramos pickup range
-        setOrbPickupRange(CommonConfig.getDefaultOrbPickupRange());
-        // Después configuramos attract range
-        setOrbAttractRange(CommonConfig.getDefaultOrbAttractRange());
-        
-        // El resto de los resets igual
-        setXpAmount(CommonConfig.getDefaultXpAmount());
-        setXpBottlesEnabled(CommonConfig.getDefaultXpBottlesEnabled());
-        setXpOrbsEnabled(CommonConfig.getDefaultXpOrbsEnabled());
-        setRequireCrouching(CommonConfig.getDefaultRequiresCrouching());
-        setBottleXpMultiplier(CommonConfig.getDefaultBottleXpMultiplier());
-        setOrbXpMultiplier(CommonConfig.getDefaultOrbXpMultiplier());
-        setLevelsPerBottle(CommonConfig.getDefaultLevelsPerBottle());
-        
-        saveConfig();
-        
-        // Recargar la pantalla
-        this.minecraft.setScreen(this.lastScreen);
-        this.minecraft.setScreen(new ConfigScreenBase(this.lastScreen, this.options));
-    }
-
-    // Fields to track the initial values before user changes
-    private Integer lastXpAmount = null;
-    private Boolean lastBottlesEnabled = null;
-    private Boolean lastOrbsEnabled = null;
-    private Boolean lastRequireCrouching = null;
-    private Float lastBottleMultiplier = null;
-    private Float lastOrbMultiplier = null;
-    private Double lastOrbAttractRange = null;
-    private Double lastOrbPickupRange = null;
-    private Integer lastLevelsPerBottle = null;
-    private Boolean lastShowOrbRanges = null; // Add this missing field
-
-    @Override
     protected void addOptions() {
-        if (resetButton == null) {
-            createResetButton();
-        }
-
-        // Initialize all tracking fields at the beginning
-        initializeTrackingFields();
-
         // Create option instances
         OptionInstance<Boolean> bottleToggle = OptionInstance.createBoolean(
-                "villagerxp.config.enable",
+                "villagerxp.config.enableBottles",
                 getXpBottlesEnabled(),
                 this::setXpBottlesEnabled
         );
 
         OptionInstance<Boolean> orbToggle = OptionInstance.createBoolean(
-                "villagerxp.config.enable",
+                "villagerxp.config.enableOrbs",
                 getXpOrbsEnabled(),
                 this::setXpOrbsEnabled
         );
@@ -126,7 +92,7 @@ public class ConfigScreenBase extends OptionsSubScreen {
         );
 
         OptionInstance<Double> bottleMultiplier = new OptionInstance<>(
-                "villagerxp.config.xpMultiplier",
+                "villagerxp.config.xpMultiplierBottles",
                 OptionInstance.noTooltip(),
                 (prefix, value) -> prefix.copy()
                         .append(": ")
@@ -142,7 +108,7 @@ public class ConfigScreenBase extends OptionsSubScreen {
         );
 
         OptionInstance<Double> orbMultiplier = new OptionInstance<>(
-                "villagerxp.config.xpMultiplier",
+                "villagerxp.config.xpMultiplierOrbs",
                 OptionInstance.noTooltip(),
                 (prefix, value) -> prefix.copy()
                         .append(": ")
@@ -208,30 +174,70 @@ public class ConfigScreenBase extends OptionsSubScreen {
                 this::setLevelsPerBottle
         );
 
-        // Create header widgets for categories
-        StringWidget orbsHeader = new StringWidget(ORBS_CATEGORY, this.font);
-        StringWidget bottlesHeader = new StringWidget(BOTTLES_CATEGORY, this.font);
-
-        // Add spacing before first category
-        this.list.addSmall(new EmptyWidget(10, 8), new EmptyWidget(10, 8));
-
-        // Add orbs category header
-        this.list.addSmall(orbsHeader, null);
+        // Add orbs category options
         this.list.addBig(orbToggle);
         this.list.addBig(orbMultiplier);
         this.list.addBig(orbAttractRangeOption);
         this.list.addBig(orbPickupRangeOption);
 
-        // Add spacing between categories
-        this.list.addSmall(new EmptyWidget(10, 16), new EmptyWidget(10, 16));
-
-        // Add bottles category header
-        this.list.addSmall(bottlesHeader, null);
+        // Add bottles category options
         this.list.addBig(bottleToggle);
         this.list.addBig(bottleMultiplier);
         this.list.addBig(levelsPerBottleOption);
         this.list.addBig(crouchToggle);
     }
+
+    protected void setResetButtonState(boolean state) {
+        if (resetButton != null) {
+            resetButton.active = state;
+        }
+    }
+
+    protected boolean isAnyNonDefault() {
+        return getXpAmount() != CommonConfig.getDefaultXpAmount() ||
+                getXpBottlesEnabled() != CommonConfig.getDefaultXpBottlesEnabled() ||
+                getXpOrbsEnabled() != CommonConfig.getDefaultXpOrbsEnabled() ||
+                getRequireCrouching() != CommonConfig.getDefaultRequiresCrouching() ||
+                getBottleXpMultiplier() != CommonConfig.getDefaultBottleXpMultiplier() ||
+                getOrbXpMultiplier() != CommonConfig.getDefaultOrbXpMultiplier() ||
+                getOrbAttractRange() != CommonConfig.getDefaultOrbAttractRange() ||
+                getOrbPickupRange() != CommonConfig.getDefaultOrbPickupRange() ||
+                getLevelsPerBottle() != CommonConfig.getDefaultLevelsPerBottle();
+    }
+
+    private void resetToDefaults() {
+        // Primero configuramos pickup range
+        setOrbPickupRange(CommonConfig.getDefaultOrbPickupRange());
+        // Después configuramos attract range
+        setOrbAttractRange(CommonConfig.getDefaultOrbAttractRange());
+
+        // El resto de los resets igual
+        setXpAmount(CommonConfig.getDefaultXpAmount());
+        setXpBottlesEnabled(CommonConfig.getDefaultXpBottlesEnabled());
+        setXpOrbsEnabled(CommonConfig.getDefaultXpOrbsEnabled());
+        setRequireCrouching(CommonConfig.getDefaultRequiresCrouching());
+        setBottleXpMultiplier(CommonConfig.getDefaultBottleXpMultiplier());
+        setOrbXpMultiplier(CommonConfig.getDefaultOrbXpMultiplier());
+        setLevelsPerBottle(CommonConfig.getDefaultLevelsPerBottle());
+
+        saveConfig();
+
+        // Recargar la pantalla
+        this.minecraft.setScreen(this.lastScreen);
+        this.minecraft.setScreen(new ConfigScreenBase(this.lastScreen, this.options));
+    }
+
+    // Fields to track the initial values before user changes
+    private Integer lastXpAmount = null;
+    private Boolean lastBottlesEnabled = null;
+    private Boolean lastOrbsEnabled = null;
+    private Boolean lastRequireCrouching = null;
+    private Float lastBottleMultiplier = null;
+    private Float lastOrbMultiplier = null;
+    private Double lastOrbAttractRange = null;
+    private Double lastOrbPickupRange = null;
+    private Integer lastLevelsPerBottle = null;
+    private Boolean lastShowOrbRanges = null;
 
     private void initializeTrackingFields() {
         lastXpAmount = getXpAmount();
@@ -255,17 +261,6 @@ public class ConfigScreenBase extends OptionsSubScreen {
 
         @Override
         protected void updateWidgetNarration(NarrationElementOutput narrationElementOutput) {}
-    }
-
-    @Override
-    protected void addFooter() {
-        LinearLayout linearLayout = layout.addToFooter(LinearLayout.horizontal().spacing(8));
-        if (resetButton != null) {
-            linearLayout.addChild(resetButton);
-            linearLayout.addChild(doneButton);
-        } else {
-            super.addFooter();
-        }
     }
 
     protected int getXpAmount() {
@@ -347,7 +342,7 @@ public class ConfigScreenBase extends OptionsSubScreen {
     @Override
     public void onClose() {
         saveConfig();
-        super.onClose();
+        this.minecraft.setScreen(this.lastScreen);
     }
 
     @Override

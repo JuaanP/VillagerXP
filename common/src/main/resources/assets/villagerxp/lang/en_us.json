@@ -5,12 +5,17 @@
   "villagerxp.config.category.bottles": "Bottle o' Enchanting Settings",
   "villagerxp.config.category.orbs": "Experience Orb Settings",
 
-  "villagerxp.config.requireCtrl": "Require Crouching",
-  "villagerxp.config.xpMultiplier": "XP Multiplier",
-  "villagerxp.config.orbAttractRange": "Attraction Range",
-  "villagerxp.config.orbPickupRange": "Pickup Range",
+  "villagerxp.config.requireCtrl": "XP Bottle Requires Crouching",
 
-  "villagerxp.config.enable": "Enable",
+  "villagerxp.config.xpMultiplierBottles": "Bottle XP Multiplier",
+  "villagerxp.config.xpMultiplierOrbs": "Orb XP Multiplier",
+
+  "villagerxp.config.orbAttractRange": "Orb Attraction Range",
+  "villagerxp.config.orbPickupRange": "Orb Pickup Range",
+
+  "villagerxp.config.enableBottles": "Enable XP Bottles",
+  "villagerxp.config.enableOrbs": "Enable XP Orbs",
+
   "villagerxp.config.reset": "Reset",
   "villagerxp.config.default": "Default",
 

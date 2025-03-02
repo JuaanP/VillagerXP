@@ -6,7 +6,7 @@ import net.minecraft.world.entity.npc.Villager;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class EventHandlerNeoForge {
+public class EventHandlerForge {
     private static final VillagerEventHandler handler = new VillagerEventHandler(CommonConfig.getInstance());
 
     @SubscribeEvent

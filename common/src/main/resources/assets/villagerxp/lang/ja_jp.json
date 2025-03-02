@@ -5,12 +5,17 @@
   "villagerxp.config.category.bottles": "エンチャントの瓶の設定",
   "villagerxp.config.category.orbs": "経験値オーブの設定",
 
-  "villagerxp.config.requireCtrl": "しゃがみが必要",
-  "villagerxp.config.xpMultiplier": "XP倍率",
-  "villagerxp.config.orbAttractRange": "引き寄せ範囲",
-  "villagerxp.config.orbPickupRange": "拾得範囲",
+  "villagerxp.config.requireCtrl": "XPボトルは屈む必要がある",
 
-  "villagerxp.config.enable": "有効化",
+  "villagerxp.config.xpMultiplierBottles": "ボトルXP倍率",
+  "villagerxp.config.xpMultiplierOrbs": "オーブXP倍率",
+
+  "villagerxp.config.orbAttractRange": "オーブ引き寄せ範囲",
+  "villagerxp.config.orbPickupRange": "オーブ拾得範囲",
+
+  "villagerxp.config.enableBottles": "XPボトルを有効化",
+  "villagerxp.config.enableOrbs": "XPオーブを有効化",
+
   "villagerxp.config.reset": "リセット",
   "villagerxp.config.default": "デフォルト",
 

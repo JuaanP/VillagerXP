@@ -5,12 +5,17 @@
   "villagerxp.config.category.bottles": "Verzauberungsflasche-Einstellungen",
   "villagerxp.config.category.orbs": "Erfahrungskugel-Einstellungen",
 
-  "villagerxp.config.requireCtrl": "Ducken erforderlich",
-  "villagerxp.config.xpMultiplier": "XP-Multiplikator",
-  "villagerxp.config.orbAttractRange": "Anziehungsreichweite",
-  "villagerxp.config.orbPickupRange": "Aufnahmereichweite",
+  "villagerxp.config.requireCtrl": "Verzauberungsflasche benötigt Ducken",
 
-  "villagerxp.config.enable": "Aktivieren",
+  "villagerxp.config.xpMultiplierBottles": "Flasche-XP-Multiplikator",
+  "villagerxp.config.xpMultiplierOrbs": "Kugel-XP-Multiplikator",
+
+  "villagerxp.config.orbAttractRange": "Kugel-Anziehungsreichweite",
+  "villagerxp.config.orbPickupRange": "Kugel-Aufnahmereichweite",
+
+  "villagerxp.config.enableBottles": "Verzauberungsflaschen aktivieren",
+  "villagerxp.config.enableOrbs": "Erfahrungskugeln aktivieren",
+
   "villagerxp.config.reset": "Zurücksetzen",
   "villagerxp.config.default": "Standard",
 

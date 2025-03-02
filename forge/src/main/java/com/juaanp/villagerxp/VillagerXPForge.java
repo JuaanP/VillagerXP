@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModContainer;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.config.ModConfig;
@@ -20,15 +19,14 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.client.ConfigScreenHandler;
 
 @Mod(Constants.MOD_ID)
-public class VillagerXPNeoForge {
+public class VillagerXPForge {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public VillagerXPNeoForge() {
+    public VillagerXPForge() {
         IEventBus modEventBus = net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
 
-        // Registramos los eventos de juego en el FORGE bus, no en el MOD bus
-        MinecraftForge.EVENT_BUS.register(new EventHandlerNeoForge());
+        MinecraftForge.EVENT_BUS.register(new EventHandlerForge());
         MinecraftForge.EVENT_BUS.register(this);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ForgePlatformHelper.SPEC);

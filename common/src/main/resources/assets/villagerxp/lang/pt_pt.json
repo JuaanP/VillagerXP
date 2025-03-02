@@ -5,12 +5,17 @@
   "villagerxp.config.category.bottles": "Definições do Frasco de Encantamento",
   "villagerxp.config.category.orbs": "Definições de Orbes de Experiência",
 
-  "villagerxp.config.requireCtrl": "Exigir Agachamento",
-  "villagerxp.config.xpMultiplier": "Multiplicador de XP",
-  "villagerxp.config.orbAttractRange": "Raio de Atração",
-  "villagerxp.config.orbPickupRange": "Raio de Recolha",
+  "villagerxp.config.requireCtrl": "Frascos de XP exigem agachamento",
 
-  "villagerxp.config.enable": "Ativar",
+  "villagerxp.config.xpMultiplierBottles": "Multiplicador de XP dos Frascos",
+  "villagerxp.config.xpMultiplierOrbs": "Multiplicador de XP dos Orbes",
+
+  "villagerxp.config.orbAttractRange": "Raio de Atração dos Orbes",
+  "villagerxp.config.orbPickupRange": "Raio de Recolha dos Orbes",
+
+  "villagerxp.config.enableBottles": "Ativar Frascos de XP",
+  "villagerxp.config.enableOrbs": "Ativar Orbes de XP",
+
   "villagerxp.config.reset": "Restaurar",
   "villagerxp.config.default": "Padrão",
 

@@ -49,7 +49,7 @@ public class VillagerEventHandler {
                         return InteractionResult.PASS;
                     }
 
-                    if (!(player.isCreative() || player.hasInfiniteMaterials())) {
+                    if (!(player.isCreative())) {
                         stack.shrink(1);
                     }
 

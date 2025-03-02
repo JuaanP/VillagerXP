@@ -5,12 +5,17 @@
   "villagerxp.config.category.bottles": "Настройки Пузырьков Зачарования",
   "villagerxp.config.category.orbs": "Настройки Сфер Опыта",
 
-  "villagerxp.config.requireCtrl": "Требовать Приседание",
-  "villagerxp.config.xpMultiplier": "Множитель XP",
-  "villagerxp.config.orbAttractRange": "Дальность Притяжения",
-  "villagerxp.config.orbPickupRange": "Дальность Подбора",
+  "villagerxp.config.requireCtrl": "Для пузырьков XP требуется приседание",
 
-  "villagerxp.config.enable": "Включить",
+  "villagerxp.config.xpMultiplierBottles": "Множитель XP Пузырьков",
+  "villagerxp.config.xpMultiplierOrbs": "Множитель XP Сфер",
+
+  "villagerxp.config.orbAttractRange": "Дальность Притяжения Сфер",
+  "villagerxp.config.orbPickupRange": "Дальность Подбора Сфер",
+
+  "villagerxp.config.enableBottles": "Включить Пузырьки XP",
+  "villagerxp.config.enableOrbs": "Включить Сферы XP",
+
   "villagerxp.config.reset": "Сбросить",
   "villagerxp.config.default": "По умолчанию",
 

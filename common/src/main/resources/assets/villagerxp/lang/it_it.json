@@ -5,12 +5,17 @@
   "villagerxp.config.category.bottles": "Impostazioni Bottiglia di Incantamento",
   "villagerxp.config.category.orbs": "Impostazioni Sfere di Esperienza",
 
-  "villagerxp.config.requireCtrl": "Richiedi Accovacciamento",
-  "villagerxp.config.xpMultiplier": "Moltiplicatore XP",
-  "villagerxp.config.orbAttractRange": "Raggio di Attrazione",
-  "villagerxp.config.orbPickupRange": "Raggio di Raccolta",
+  "villagerxp.config.requireCtrl": "Le bottiglie di XP richiedono accovacciamento",
 
-  "villagerxp.config.enable": "Abilita",
+  "villagerxp.config.xpMultiplierBottles": "Moltiplicatore XP delle Bottiglie",
+  "villagerxp.config.xpMultiplierOrbs": "Moltiplicatore XP delle Sfere",
+
+  "villagerxp.config.orbAttractRange": "Raggio di Attrazione delle Sfere",
+  "villagerxp.config.orbPickupRange": "Raggio di Raccolta delle Sfere",
+
+  "villagerxp.config.enableBottles": "Abilita Bottiglie di XP",
+  "villagerxp.config.enableOrbs": "Abilita Sfere di XP",
+
   "villagerxp.config.reset": "Ripristina",
   "villagerxp.config.default": "Predefinito",
 

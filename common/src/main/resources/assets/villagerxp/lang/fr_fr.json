@@ -5,12 +5,17 @@
   "villagerxp.config.category.bottles": "Paramètres des Fioles d'Enchantement",
   "villagerxp.config.category.orbs": "Paramètres des Orbes d'Expérience",
 
-  "villagerxp.config.requireCtrl": "S'accroupir nécessaire",
-  "villagerxp.config.xpMultiplier": "Multiplicateur d'XP",
-  "villagerxp.config.orbAttractRange": "Portée d'Attraction",
-  "villagerxp.config.orbPickupRange": "Portée de Ramassage",
+  "villagerxp.config.requireCtrl": "Les fioles d'XP nécessitent de s'accroupir",
 
-  "villagerxp.config.enable": "Activer",
+  "villagerxp.config.xpMultiplierBottles": "Multiplicateur d'XP des Fioles",
+  "villagerxp.config.xpMultiplierOrbs": "Multiplicateur d'XP des Orbes",
+
+  "villagerxp.config.orbAttractRange": "Portée d'Attraction des Orbes",
+  "villagerxp.config.orbPickupRange": "Portée de Ramassage des Orbes",
+
+  "villagerxp.config.enableBottles": "Activer les Fioles d'XP",
+  "villagerxp.config.enableOrbs": "Activer les Orbes d'XP",
+
   "villagerxp.config.reset": "Réinitialiser",
   "villagerxp.config.default": "Par défaut",
 

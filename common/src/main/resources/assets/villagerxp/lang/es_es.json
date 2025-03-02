@@ -5,12 +5,17 @@
   "villagerxp.config.category.bottles": "Ajustes de Botella de Experiencia",
   "villagerxp.config.category.orbs": "Ajustes de Orbes de Experiencia",
 
-  "villagerxp.config.requireCtrl": "Requerir Agacharse",
-  "villagerxp.config.xpMultiplier": "Multiplicador de XP",
-  "villagerxp.config.orbAttractRange": "Rango de Atracción",
-  "villagerxp.config.orbPickupRange": "Rango de Recogida",
+  "villagerxp.config.requireCtrl": "Botellas de XP requieren agacharse",
 
-  "villagerxp.config.enable": "Activar",
+  "villagerxp.config.xpMultiplierBottles": "Multiplicador de XP de Botellas",
+  "villagerxp.config.xpMultiplierOrbs": "Multiplicador de XP de Orbes",
+
+  "villagerxp.config.orbAttractRange": "Rango de Atracción de Orbes",
+  "villagerxp.config.orbPickupRange": "Rango de Recogida de Orbes",
+
+  "villagerxp.config.enableBottles": "Activar Botellas de XP",
+  "villagerxp.config.enableOrbs": "Activar Orbes de XP",
+
   "villagerxp.config.reset": "Restablecer",
   "villagerxp.config.default": "Predeterminado",
 
