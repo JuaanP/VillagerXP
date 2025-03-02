@@ -12,5 +12,9 @@
 
   "villagerxp.config.enable": "有効化",
   "villagerxp.config.reset": "リセット",
-  "villagerxp.config.default": "デフォルト"
+  "villagerxp.config.default": "デフォルト",
+
+  "villagerxp.config.levelsPerBottle": "ボトルごとのレベル",
+  "villagerxp.config.auto": "自動",
+  "villagerxp.config.max": "最大"
 }

@@ -12,5 +12,9 @@
 
   "villagerxp.config.enable": "Abilita",
   "villagerxp.config.reset": "Ripristina",
-  "villagerxp.config.default": "Predefinito"
+  "villagerxp.config.default": "Predefinito",
+
+  "villagerxp.config.levelsPerBottle": "Livelli per bottiglia",
+  "villagerxp.config.auto": "Auto",
+  "villagerxp.config.max": "Max"
 }

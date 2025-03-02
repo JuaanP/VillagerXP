@@ -12,5 +12,9 @@
 
   "villagerxp.config.enable": "Включить",
   "villagerxp.config.reset": "Сбросить",
-  "villagerxp.config.default": "По умолчанию"
+  "villagerxp.config.default": "По умолчанию",
+
+  "villagerxp.config.levelsPerBottle": "Уровней за флакон",
+  "villagerxp.config.auto": "Авто",
+  "villagerxp.config.max": "Макс"
 }

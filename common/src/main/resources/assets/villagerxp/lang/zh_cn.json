@@ -12,5 +12,9 @@
 
   "villagerxp.config.enable": "启用",
   "villagerxp.config.reset": "重置",
-  "villagerxp.config.default": "默认"
+  "villagerxp.config.default": "默认",
+
+  "villagerxp.config.levelsPerBottle": "每瓶等级",
+  "villagerxp.config.auto": "自动",
+  "villagerxp.config.max": "最大"
 }
