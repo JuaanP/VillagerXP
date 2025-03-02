@@ -36,7 +36,7 @@ public class ConfigScreenBase extends Screen {
 
     @Override
     protected void init() {
-        this.list = new OptionsList(this.minecraft, this.width, this.height - 64, 32, 25);
+        this.list = new OptionsList(this.minecraft, this.width, this.height - 64, 32, this.height - 32, 25);
 
         // Create reset and done buttons
         this.resetButton = Button.builder(RESET, button -> resetToDefaults())
@@ -62,7 +62,7 @@ public class ConfigScreenBase extends Screen {
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-        this.renderBackground(graphics, mouseX, mouseY, partialTick);
+        this.renderBackground(graphics);
         this.list.render(graphics, mouseX, mouseY, partialTick);
         graphics.drawCenteredString(this.font, this.title, this.width / 2, 5, 16777215);
 
